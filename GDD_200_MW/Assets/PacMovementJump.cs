@@ -26,7 +26,6 @@ public class PacMovementJump : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Start function called");
         spawnSpot = GameObject.Find("SpawnPoint").transform;
 
         //for snap movement
@@ -49,6 +48,7 @@ public class PacMovementJump : MonoBehaviour
         jumpForce = new Vector2(0, 25);
         poundForce = new Vector2(0, -25);
         fallingForce = 0f;
+        Debug.Log("Reached end of start method");
     }
 
     // Update is called once per frame
