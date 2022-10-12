@@ -157,6 +157,7 @@ public class PacMovementJump : MonoBehaviour
             //transform.Translate(MoveRight * Time.deltaTime * speed);
             fallingForce = pacmanPhysics.velocity.y;
             pacmanPhysics.velocity = new Vector2(10, fallingForce);
+            characterAnimator.SetBool("isRunning", true);
 
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
@@ -190,7 +191,7 @@ public class PacMovementJump : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.F))
         {
             //melee attack
-            characterAnimator.Play("meleeState");
+            //characterAnimator.Play("meleeState"); //commented out to show parameters
 
         }
         else if(Input.GetKey(KeyCode.B))
