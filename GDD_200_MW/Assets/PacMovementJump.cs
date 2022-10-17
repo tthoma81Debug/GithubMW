@@ -17,6 +17,8 @@ public class PacMovementJump : MonoBehaviour
     Animator characterAnimator;
     public GameObject theProjectileHolder;
     private GameObject currentProjectile;
+    private GameObject meleeSoundObject;
+    private AudioSource meleeSound;
     public Transform spawnSpot;
 
     int speed;
@@ -27,7 +29,8 @@ public class PacMovementJump : MonoBehaviour
     void Start()
     {
         spawnSpot = GameObject.Find("SpawnPoint").transform;
-
+        meleeSoundObject = GameObject.Find("MeleeSound");
+        meleeSound = meleeSoundObject.GetComponent<AudioSource>();
         //for snap movement
         /*
         MoveRight = new Vector3(5, 0, 0);
@@ -45,7 +48,7 @@ public class PacMovementJump : MonoBehaviour
         speed = 3;
         pacmanPhysics = GetComponent<Rigidbody2D>();
         characterAnimator = GetComponent<Animator>();
-        jumpForce = new Vector2(0, 25);
+        jumpForce = new Vector2(0, 5);
         poundForce = new Vector2(0, -25);
         fallingForce = 0f;
         Debug.Log("Reached end of start method");
@@ -190,6 +193,9 @@ public class PacMovementJump : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.F))
         {
+
+             meleeSound.Play();
+             characterAnimator.SetBool("meleeAttack", true);
             //melee attack
             //characterAnimator.Play("meleeState"); //commented out to show parameters
 

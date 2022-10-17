@@ -8,6 +8,7 @@ public class MeleeScript : MonoBehaviour
 
     ZombieScript theZombieScript;
     GameObject theZombie;
+    private AudioSource zombieAudio;
     void Start()
     {
         theZombie = GameObject.FindGameObjectWithTag("zombie");
@@ -29,7 +30,8 @@ public class MeleeScript : MonoBehaviour
 
             //this way works:
             theZombieScript = collision.gameObject.GetComponent<ZombieScript>();
-
+            zombieAudio = collision.gameObject.GetComponent<AudioSource>();
+            zombieAudio.Play();
             theZombieScript.takeDamage();
             theZombieScript.someRandomVariableHereCanAccessCool = false;
 
