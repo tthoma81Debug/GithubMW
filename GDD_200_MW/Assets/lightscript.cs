@@ -25,10 +25,14 @@ public class lightscript : MonoBehaviour
     {
         Debug.Log("Trigger Was Tripped");
 
-        thingThatTripped = GameObject.Find("Candle");
-        lightComponent = thingThatTripped.GetComponent<Light2D>();
-        lightComponent.intensity += 3.0f;
-        Destroy(this.gameObject);
+        if(collision.gameObject.name == "Woodcutter")
+        {
+            thingThatTripped = GameObject.Find("Candle");
+            lightComponent = thingThatTripped.GetComponent<Light2D>();
+            lightComponent.intensity += 3.0f;
+            Destroy(this.gameObject);
+        }
+        
 
 
 
