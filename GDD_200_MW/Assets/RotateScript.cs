@@ -37,3 +37,16 @@ public class RotateScript : MonoBehaviour
         //deg, or degrees, can be positive or negative. 
     }
 }
+
+
+/*other useful rotate stuff
+ * 
+ *      //A rotation 30 degrees around the y-axis
+        Vector3 rotationVector = new Vector3(0, 30, 0);
+        Quaternion rotation = Quaternion.Euler(rotationVector); //can pass in floats here too
+        transform.rotation = rotation;
+
+ * 
+ */
+
+
