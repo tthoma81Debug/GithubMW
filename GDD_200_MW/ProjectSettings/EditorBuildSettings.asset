@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/BlendTest.unity
+    guid: 3f442846db0515549b37fde070724dd6
+  - enabled: 1
+    path: Assets/Level2.unity
+    guid: a7377f1f3873d474f9e641f823d4d4fa
+  - enabled: 1
+    path: Assets/Scenes/Melee1MW.unity
+    guid: 6d6dc44586b4c9c48b3c8e1ab36d4857
   m_configObjects: {}

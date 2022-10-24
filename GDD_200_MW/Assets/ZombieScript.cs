@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZombieScript : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class ZombieScript : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(this.gameObject);
+                //change level
+                GameObject Woodcutter = GameObject.Find("Woodcutter");
+                DontDestroyOnLoad(Woodcutter);
+                SceneManager.LoadScene("Melee1MW");
             }
 
             Debug.Log("Health post hit is " + health);
@@ -43,7 +48,8 @@ public class ZombieScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Invincible. Hit but no damage :)");
+            //Debug.Log("Invincible. Hit but no damage :)");
+            health--;
         }
     }
 }
