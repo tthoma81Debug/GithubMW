@@ -20,6 +20,7 @@ public class PacMovementJump : MonoBehaviour
     private GameObject meleeSoundObject;
     private AudioSource meleeSound;
     public Transform spawnSpot;
+    private Rigidbody2D zombiePhysics;
 
     int speed;
     bool canJump = false;
@@ -206,6 +207,48 @@ public class PacMovementJump : MonoBehaviour
             currentProjectile = Instantiate(theProjectileHolder, spawnSpot.position, spawnSpot.rotation);
             Rigidbody2D projectilePhysics = currentProjectile.GetComponent<Rigidbody2D>();
             projectilePhysics.AddForce(new Vector2(15, 0), ForceMode2D.Impulse);
+        }
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            //cast a ray
+
+            Vector2 rayOrigin = new Vector2(this.gameObject.transform.position.x + 2, this.gameObject.transform.position.y);
+            Vector2 rayRightLength = new Vector2(100, 0);
+
+
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, Mathf.Infinity);
+            Debug.DrawRay(rayOrigin, rayRightLength, Color.green, 5);
+
+            if (hit == false)
+            {
+                Debug.Log("ray fired. Didn't hit anything");
+            }
+            else
+            {
+                Debug.Log("Ray hit something. It hit " + hit.transform.gameObject.name);
+
+                if(hit.transform.gameObject.name == "zombie")
+                {
+                    Debug.Log("Which is an enemy. Grappling");
+                    //add force here
+
+                    Vector2 distance = hit.transform.position - this.transform.position;
+
+                    //hardcoded force. usually replace with dynamic distance
+                    //Vector2 grappleForce = new Vector2(-5, 3);
+
+                    //force based on distance
+                    float distanceForce = (distance.x * -1) * 0.75f;
+                    Vector2 grappleForce = new Vector2(distanceForce, distance.y + 2);
+
+                    zombiePhysics = hit.transform.gameObject.GetComponent<Rigidbody2D>();
+                    zombiePhysics.AddForce(grappleForce, ForceMode2D.Impulse);
+
+                    
+                    Debug.Log("Initial Distance is " + distance);
+
+                }
+            }
         }
 
 
