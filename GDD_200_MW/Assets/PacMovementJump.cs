@@ -210,13 +210,16 @@ public class PacMovementJump : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.C))
         {
+            //define a "layer mask" so rays only affect certain things
+            int theLayerMask = LayerMask.GetMask("Enemy");
             //cast a ray
-
+            //also look at raycast all for array
             Vector2 rayOrigin = new Vector2(this.gameObject.transform.position.x + 2, this.gameObject.transform.position.y);
             Vector2 rayRightLength = new Vector2(100, 0);
 
+            
 
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, Mathf.Infinity);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right, Mathf.Infinity, theLayerMask);
             Debug.DrawRay(rayOrigin, rayRightLength, Color.green, 5);
 
             if (hit == false)
