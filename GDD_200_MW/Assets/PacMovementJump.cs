@@ -154,6 +154,19 @@ public class PacMovementJump : MonoBehaviour
         }
         */
 
+
+       // if(Input.GetAxis("Horizontal") != 0)
+       // {
+            Debug.Log("horizontal input is " + Input.GetAxis("Horizontal"));
+
+
+        float speed = 20f;
+        float movement = Input.GetAxis("Horizontal") * speed;
+        Vector2 newSpeed = new Vector2(movement, pacmanPhysics.velocity.y);
+        pacmanPhysics.velocity = newSpeed;
+
+       // }
+
         //physics based jump and movement
         if (Input.GetKey(KeyCode.RightArrow))
         {
